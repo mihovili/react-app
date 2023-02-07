@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-aks-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-aks-app
+  template:
+    metadata:
+      labels:
+        app: my-aks-app
+    spec:
+      containers:
+        - name: my-aks-container
+          image: mjfastlane/testdockerreactapp:latest
+          ports:
+            - containerPort: 3000
